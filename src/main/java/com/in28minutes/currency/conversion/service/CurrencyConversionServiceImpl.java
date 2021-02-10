@@ -35,6 +35,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
 	@Override
 	public CurrencyConversion calculateCurrencyConversionFeign(String from, String to, BigDecimal quantity) {
 		CurrencyConversion currencyConversion = proxy.retrieveExchangeValue(from, to);
+		currencyConversion.setEnvironment(currencyConversion.getEnvironment() + " :: feign");
 		currencyConversion.setQuantity(quantity);
 		currencyConversion.setTotalCalculatedAmmount(quantity.multiply(
 				currencyConversion.getConversionMultiple()));

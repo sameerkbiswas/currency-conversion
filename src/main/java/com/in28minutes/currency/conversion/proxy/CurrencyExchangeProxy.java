@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.in28minutes.currency.conversion.bean.CurrencyConversion;
 
-@FeignClient(name="currency-exchange", url="localhost:8000")
+//@FeignClient(name="currency-exchange", url="localhost:8000")
+@FeignClient(name="currency-exchange")	// Dynamic load balancing by Feign
 public interface CurrencyExchangeProxy {
 	
 	@GetMapping("currency-exchange/from/{from}/to/{to}")
